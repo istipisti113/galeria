@@ -1,3 +1,27 @@
 body{
-    background-color: lightgoldenrodyellow;
+width: 100%;
+}
+
+.coupon_slideshow{
+    display: flex;
+    background-color: black;
+    color: wheat;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+.carousel-item {
+    display: flex;
+    align-items: center;      /* függőleges közép */
+   
+}
+.first {
+    background-color: wheat;
+}
+.info{
+    display:flex; 
+    flex-wrap:nowrap;
+    }
+.info p{
+    float: right;
 }
