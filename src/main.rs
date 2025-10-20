@@ -15,16 +15,25 @@ async fn main() {
     .and(warp::path::param()).and(warp::path::param())
     .and(warp::path::end())
     .map(|festo : String, festmeny : String|{
-        let mut html = fs::read_to_string("kep.html").unwrap();
+        let mut html = fs::read_to_string("kep.html").unwrap(); // ures html forma a kepnek
+        let data  = fs::read_to_string(format!("festok/{}/{}/dat.txt",festo, festmeny)).unwrap(); 
+        let adat : Vec<&str> = data.split("\n").collect(); // 0 a nev 1 a mu cime
         html = html.replace("painter", &festo);
-        html = html.replace("painting",&festmeny);
+        html = html.replace("painting", &festmeny);
+        html = html.replace("festmeny", adat[1]);
+        html = html.replace("muvesz", adat[0]);
         warp::reply::html(html)
-        });
+        }
+    );
+
+    let alkotas = warp::path!("alkotas"/ String).map(|alkotas: String|{
+        warp::reply::html(fs::read_to_string("alkotas.html").unwrap().replace("alkotas", &alkotas))
+    });
 
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(asd);
+    .or(asd).or(alkotas);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
