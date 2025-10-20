@@ -1,5 +1,5 @@
 use warp::{filters::path::param, Filter};
-use std::fs;
+use std::{collections::HashMap, fs};
 
 #[tokio::main]
 async fn main() {
@@ -25,15 +25,29 @@ async fn main() {
         warp::reply::html(html)
         }
     );
+    
+    let form = warp::path!("form").map(||{warp::reply::html(fs::read_to_string("feltoltes.html").unwrap())});
+    let feltoltes = warp::post().and(warp::path!("feltoltes")).and(warp::body::form())
+    .map(|body: HashMap<String, String>|{
 
-    let alkotas = warp::path!("alkotas"/ String).map(|alkotas: String|{
-        warp::reply::html(fs::read_to_string("alkotas.html").unwrap().replace("alkotas", &alkotas))
+    });
+
+    let alkotas = warp::path!("alkotas"/String/ String).map(|alkoto: String , alkotas: String|{
+        let page = fs::read_to_string("alkotas.html").unwrap();
+        let raw  = fs::read_to_string(format!("festok/{}/{}/dat.txt",alkoto, alkotas)).unwrap(); 
+        let adat : Vec<&str> = raw.split("\n").collect(); // 0 a nev 1 a mu cime
+        warp::reply::html(page
+            .replace("painter", &alkoto)
+            .replace("painting", &alkotas)
+            .replace("alkotas", &adat[1])
+            .replace("alkoto", &adat[0])
+        )
     });
 
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(asd).or(alkotas);
+    .or(asd).or(alkotas).or(form);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
