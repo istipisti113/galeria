@@ -1,7 +1,7 @@
-function loadPage(page) {
-            fetch(page + ".html")
+function loadPage(page, id) {
+            fetch(page)
             .then(response => response.text())
             .then(data => {
-                document.getElementById("sidebarcontainer").innerHTML = data;
+                document.getElementById(id).innerHTML = data;
             });
         }
