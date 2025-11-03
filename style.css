@@ -1,35 +1,98 @@
-body{
-width: 100%;
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.coupon_slideshow{
-    display: flex;
-    background-color: black;
-    color: wheat;
-    width: 100%;
-    text-align: center;
-    align-items: center;
+/* Kupon szalag */
+.coupon_slideshow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: wheat;
+  width: 100%;
+  text-align: center;
 }
+
 .carousel-item {
-    display: flex;
-    align-items: center;      /* függőleges közép */
-   
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* Első szekció háttér */
 .first {
-    background-color: #F7F2e9;
+  background-color: #f7f2e9;
+  padding: 40px 0;
 }
-.info{
-    display:flex; 
-    flex-wrap:nowrap;
-    }
-.info p{
-    float: right;
+
+.first a {
+    text-decoration: none;
+    color: black;
 }
+
+/* "Art & Home" cím + bevezető szöveg */
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.info p {
+  margin-top: 10px;
+}
+
+/* Képek konténere */
+.kepek {
+  margin: 40px auto;
+  text-align: center;
+}
+.kepek .row {
+  justify-content: center;
+}
+
+/* Második szekció (ikonok) */
+.second {
+  text-align: center;
+  padding: 40px 0;
+  background-color: white;
+}
+
+/* Ikon-sor */
 .all {
-    display: flex;
-    float: left;
-    
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
 }
-.second{
+
+.all div {
+  flex: 1 1 200px;
+  max-width: 250px;
+}
+
+/* Általános thumbnail javítás */
+.thumbnail img {
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.thumbnail img:hover {
+  transform: scale(1.05);
+}
+.third {
+    background-color: #f7f2e9;
+    padding: 40px 0;
     text-align: center;
+    padding: 40px 0;
+
+}
+
+.third a {
+    text-decoration: none;
+    color: black;
 }
