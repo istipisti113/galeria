@@ -1,5 +1,5 @@
 use warp::{filters::path::param, reply::{Reply, Response}, Filter};
-use std::{collections::HashMap, fs, string};
+use std::{collections::HashMap, fs, os::raw, string};
 
 #[tokio::main]
 async fn main() {
@@ -7,7 +7,7 @@ async fn main() {
     println!("port is {}", port);
     let home = warp::path::end().map(|| warp::reply::html(fs::read_to_string("index.html").unwrap()));
     let home2 = warp::path("index").map(|| warp::reply::html(fs::read_to_string("index.html").unwrap()));
-    let galeria = warp::path!("galeria").map(|| warp::reply::html(fs::read_to_string("galeria.html").unwrap()));
+    let galeria = warp::path!("galeria").map(|| warp::reply::html(creategalery()));
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
@@ -72,4 +72,27 @@ async fn main() {
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
     .or(title_icon).or(galeria_elemek).or(kepek);
     warp::serve(routes).run(([0,0,0,0], port)).await;
+}
+
+fn creategalery() -> String{
+    let mut rawgaleryhtml = fs::read_to_string("galeria.html").unwrap();
+    let dirs = fs::read_dir("kepek/teszt").unwrap();
+    let n = fs::read_dir("kepek/teszt").unwrap().count();
+    let mut items = String::new();
+    dirs.for_each(|painting|{
+        let item = format!("
+            <div class='col-md-3'>
+                <div id='{}'>
+                    <script>loadPage('/kep/{}/{}', '{}')</script>
+                </div>
+            </div>",
+            painting.as_ref().unwrap().file_name().to_str().unwrap(),
+            "teszt",
+            painting.as_ref().unwrap().file_name().to_str().unwrap(),
+            painting.as_ref().unwrap().file_name().to_str().unwrap()
+        );
+        items += &item;
+    });
+    println!("{}", items);
+    rawgaleryhtml.replace("galeriaitem", &items)
 }
