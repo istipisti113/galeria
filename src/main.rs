@@ -1,5 +1,5 @@
-use warp::{filters::path::param, Filter};
-use std::{collections::HashMap, fs};
+use warp::{filters::path::param, reply::{Reply, Response}, Filter};
+use std::{collections::HashMap, fs, string};
 
 #[tokio::main]
 async fn main() {
@@ -44,10 +44,16 @@ async fn main() {
         )
     });
 
+    let icons = warp::path("icons")
+    .and(warp::fs::dir("menu_pictures/Icons"));
+
+    let sorting = warp::path("sorting")
+    .and(warp::fs::dir("menu_pictures/Sorting"));
+
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(asd).or(alkotas).or(form);
+    .or(alkotas).or(form).or(icons).or(sorting);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
