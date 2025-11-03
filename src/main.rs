@@ -1,5 +1,5 @@
-use warp::{filters::path::param, Filter};
-use std::{collections::HashMap, fs};
+use warp::{filters::path::param, reply::{Reply, Response}, Filter};
+use std::{collections::HashMap, fs, string};
 
 #[tokio::main]
 async fn main() {
@@ -11,6 +11,10 @@ async fn main() {
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
+    let bootstrapmincss = warp::path("bootstrap.min.css").and(warp::fs::file("bootstrap.min.css"));
+    let bootstrapminjs = warp::path("bootstrap.min.js").and(warp::fs::file("bootstrap.min.js"));
+    let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
+    let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
     let asd = warp::path("kep")
     .and(warp::path::param()).and(warp::path::param())
     .and(warp::path::end())
@@ -44,10 +48,21 @@ async fn main() {
         )
     });
 
+    let favicon = warp::path("favicon.ico").and(warp::fs::file("favourite.ico"));
+
+    let icons = warp::path("icons")
+    .and(warp::fs::dir("menu_pictures/Icons"));
+
+    let sorting = warp::path("sorting")
+    .and(warp::fs::dir("menu_pictures/Sorting"));
+
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
+    let articles = warp::path("articles")
+    .and(warp::fs::dir("menu_pictures/Related_Articles"));
+
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(asd).or(alkotas).or(form);
+    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
