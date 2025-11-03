@@ -15,17 +15,18 @@ async fn main() {
     let bootstrapminjs = warp::path("bootstrap.min.js").and(warp::fs::file("bootstrap.min.js"));
     let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
     let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
-    let asd = warp::path("kep")
+
+    let galeria_elemek = warp::path("kep")
     .and(warp::path::param()).and(warp::path::param())
     .and(warp::path::end())
     .map(|festo : String, festmeny : String|{
         let mut html = fs::read_to_string("kep.html").unwrap(); // ures html forma a kepnek
-        let data  = fs::read_to_string(format!("festok/{}/{}/dat.txt",festo, festmeny)).unwrap(); 
+        let data  = fs::read_to_string(format!("paintings/{}/{}/dat.txt",festo, festmeny)).unwrap_or("def\ndef".to_owned());
         let adat : Vec<&str> = data.split("\n").collect(); // 0 a nev 1 a mu cime
-        html = html.replace("painter", &festo);
-        html = html.replace("painting", &festmeny);
         html = html.replace("festmeny", adat[1]);
         html = html.replace("muvesz", adat[0]);
+        html = html.replace("painter", &festo);
+        html = html.replace("painting", &festmeny);
         warp::reply::html(html)
         }
     );
@@ -38,7 +39,7 @@ async fn main() {
 
     let alkotas = warp::path!("alkotas"/String/ String).map(|alkoto: String , alkotas: String|{
         let page = fs::read_to_string("alkotas.html").unwrap();
-        let raw  = fs::read_to_string(format!("festok/{}/{}/dat.txt",alkoto, alkotas)).unwrap(); 
+        let raw  = fs::read_to_string(format!("paintings/{}/{}/dat.txt",alkoto, alkotas)).unwrap_or("def\ndef".to_owned()); 
         let adat : Vec<&str> = raw.split("\n").collect(); // 0 a nev 1 a mu cime
         warp::reply::html(page
             .replace("painter", &alkoto)
@@ -59,10 +60,16 @@ async fn main() {
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
+    let kepek = warp::path("kepek")
+        .and(warp::fs::dir("./kepek"));
+
     let articles = warp::path("articles")
     .and(warp::fs::dir("menu_pictures/Related_Articles"));
 
+    let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
+
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon);
+    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
+    .or(title_icon).or(galeria_elemek).or(kepek);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
