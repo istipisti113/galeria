@@ -48,6 +48,8 @@ async fn main() {
         )
     });
 
+    let favicon = warp::path("favicon.ico").and(warp::fs::file("favourite.ico"));
+
     let icons = warp::path("icons")
     .and(warp::fs::dir("menu_pictures/Icons"));
 
@@ -61,6 +63,6 @@ async fn main() {
     .and(warp::fs::dir("menu_pictures/Related_Articles"));
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles);
+    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
