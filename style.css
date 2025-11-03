@@ -89,3 +89,41 @@ body {
     text-decoration: none;
     color: black;
 }
+
+.header1 {
+  background-color: #fff;
+}
+
+.logo {
+  width: 48px;
+  height: auto;
+}
+
+.gallery-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.card {
+  border-radius: .7rem;
+}
+
+.footer-section {
+  background-color: #f7f2e9;
+  color: #333;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section iframe {
+  width: 80%;
+
+}
