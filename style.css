@@ -16,7 +16,7 @@ width: 100%;
    
 }
 .first {
-    background-color: wheat;
+    background-color: #F7F2e9;
 }
 .info{
     display:flex; 
@@ -24,4 +24,12 @@ width: 100%;
     }
 .info p{
     float: right;
+}
+.all {
+    display: flex;
+    float: left;
+    
+}
+.second{
+    text-align: center;
 }
