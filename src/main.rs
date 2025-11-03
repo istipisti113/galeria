@@ -11,6 +11,8 @@ async fn main() {
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
+    let bootstrapmincss = warp::path("bootstrap.min.css").and(warp::fs::file("bootstrap.min.css"));
+    let bootstrapminjs = warp::path("bootstrap.min.js").and(warp::fs::file("bootstrap.min.js"));
     let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
     let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
     let asd = warp::path("kep")
@@ -55,7 +57,10 @@ async fn main() {
     let festmenyek = warp::path("festok")
         .and(warp::fs::dir("./festok"));
 
+    let articles = warp::path("articles")
+    .and(warp::fs::dir("menu_pictures/Related_Articles"));
+
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
-    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs);
+    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
