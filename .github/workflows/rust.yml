@@ -20,9 +20,6 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
-  run:
-    runs-on: ubuntu-latest
-    steps:
     - name: ip
       run: curl ifconfig.me
     - name: Run App
