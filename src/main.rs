@@ -1,5 +1,5 @@
 use warp::{filters::path::param, reply::{Reply, Response}, Filter};
-use std::{collections::HashMap, fs, os::raw, string};
+use std::{collections::HashMap, fs, string};
 
 #[tokio::main]
 async fn main() {
@@ -21,7 +21,23 @@ async fn main() {
     let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
     let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
 
-    let checkout = warp::path("checkout.html").map(|| warp::reply::html(fs::read_to_string("checkout.html").unwrap()));
+    let checkout = warp::path("checkout.html").map(||{
+        let mut page = fs::read_to_string("checkout.html").unwrap();
+        let mut item = fs::read_to_string("checkoutlistitem.html").unwrap();
+        let mut itemek = String::new();
+        let rawkosar  = fs::read_to_string("kosar.txt").unwrap();
+        let kosar : Vec<&str>= rawkosar.split("\n").collect();
+        for elem in kosar{
+            itemek += &item.replace("painting", elem);
+        }
+        page = page.replace("paintings", &itemek);
+        warp::reply::html(page)
+    });
+    
+    let clearbasket = warp::path!("clearbasket").map(||{
+        fs::write("kosar.txt", "").unwrap();
+        warp::reply()
+    });
 
     let galeria_elemek = warp::path("kep")
     .and(warp::path::param()).and(warp::path::param())
@@ -57,7 +73,13 @@ async fn main() {
     });
     
     let kosar = warp::path!("kosar").map(||{
-
+        let mut kosar = fs::read_to_string("kosar.txt").unwrap();
+        let mut replying = String::from("{");
+        kosar.split("\n").for_each(|name|{
+            replying += &("\"".to_owned()+name.trim()+"\",");
+        });
+        replying+="}";
+        warp::reply::json(&replying)
     });
 
     let vetel = warp::path!("vetel"/String).map(|alkotas: String|{
@@ -102,7 +124,7 @@ async fn main() {
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
-    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel)
+    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel).or(kosar)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
     .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
     warp::serve(routes).run(([0,0,0,0], port)).await;
