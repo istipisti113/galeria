@@ -137,7 +137,7 @@ fn style(a: fs::ReadDir, mappa: &str)->String{
 fn names(dir : fs::ReadDir, mappa: &str)-> Vec<String>{
     dir.into_iter().map(|kep|{
     //for kep in dir.into_iter(){
-        let a = kep.unwrap().file_name().into_string().unwrap();
+         a = kep.unwrap().file_name().into_string().unwrap();
         //println!("{}", a);
         //println!("{}/dat.txt",a);
         //println!("{}",fs::read_to_string(format!("kepek/impressionism/{}/dat.txt", a)).unwrap());
