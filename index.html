@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="title-icon.png">
+    <link rel="icon" type="image/x-icon" href="./menu_pictures/x-icon/Title-icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <title>FusionGallery</title>
 
     <link rel="icon" href="title-icon.png" type="image/x-icon">
+    <script src="scroll-animations.js"></script>
   </head>
-
   <body>
     <script>loadPage("header", "header")</script>
     <div id="header"></div>
     <section>
-      <div class="first">
+      <div class="first slide-in-left">
         <div class="info">
           <h1>Art & Home</h1>
           <p>With a diverse set of mediums, frames, and formats to choose from, styling your space is simple.</p>
@@ -80,7 +80,7 @@
       </div>
     </section>
 
-    <div class="second col-md-12">
+    <div class="second col-md-12 slide-in-right">
       <h1>The Minted Difference</h1>
       <div class="all">
         <div class="icon_1 col-md-3">
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <div class="third col-md-12">
+    <div class="third col-md-12 slide-in-left">
       <h1>Related articles</h1>
       <div class="all">
         <div class="col-md-2">
@@ -152,120 +152,66 @@
       </div>
     </div>
 
-    <section style="color: #000; background-color: #f3f2f2;">
-      <div class="container py-5">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-10 col-xl-8 text-center">
-            <h3 class="fw-bold mb-4">Testimonials</h3>
-            <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-              numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-              quisquam eum porro a pariatur veniam.
+    <section style="color: #000; background-color: #f3f2f2;" class="slide-in-right">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-xl-8 text-center">
+        <h2>What Our Customers Say</h2>
+        <p class="mb-4">Real experiences from art lovers who've transformed their spaces with Fusion Gallery</p>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card">
+          <div class="card-body py-4">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://ui-avatars.com/api/?name=Sarah+M&background=random" class="rounded-circle shadow-1-strong" width="100" height="100" />
+            </div>
+            <h5 class="font-weight-bold">Sarah Mitchell</h5>
+            <h6 class="font-weight-bold my-3">Interior Designer</h6>
+            <p class="mb-2">
+              <i class="fas fa-quote-left pe-2"></i>
+              Fusion Gallery has revolutionized how I source art for my clients. The quality is outstanding, and the selection is incredibly diverse. The floating frame options are particularly impressive.
             </p>
+            <div class="text-warning mb-3">
+              ★★★★★
+            </div>
           </div>
         </div>
-
-        <div class="row text-center">
-          <div class="col-md-4 mb-4 mb-md-0">
-            <div class="card">
-              <div class="card-body py-4 mt-2">
-                <div class="d-flex justify-content-center mb-4">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                    class="rounded-circle shadow-1-strong" width="100" height="100" />
-                </div>
-                <h5 class="font-weight-bold">Teresa May</h5>
-                <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
-                <ul class="list-unstyled d-flex justify-content-center">
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star-half-alt fa-sm text-info"></i>
-                  </li>
-                </ul>
-                <p class="mb-2">
-                  <i class="fas fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet,
-                  consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat
-                  ad velit ab hic tenetur.
-                </p>
-              </div>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card">
+          <div class="card-body py-4">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://ui-avatars.com/api/?name=David+K&background=random" class="rounded-circle shadow-1-strong" width="100" height="100" />
+            </div>
+            <h5 class="font-weight-bold">David Kim</h5>
+            <h6 class="font-weight-bold my-3">Art Enthusiast</h6>
+            <p class="mb-2">
+              <i class="fas fa-quote-left pe-2"></i>
+              I've purchased several pieces from Fusion Gallery and each one has exceeded my expectations. The website makes it so easy to visualize how the art will look in different frames and sizes.
+            </p>
+            <div class="text-warning mb-3">
+              ★★★★★
             </div>
           </div>
-          <div class="col-md-4 mb-4 mb-md-0">
-            <div class="card">
-              <div class="card-body py-4 mt-2">
-                <div class="d-flex justify-content-center mb-4">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(15).webp"
-                    class="rounded-circle shadow-1-strong" width="100" height="100" />
-                </div>
-                <h5 class="font-weight-bold">Maggie McLoan</h5>
-                <h6 class="font-weight-bold my-3">Photographer at Studio LA</h6>
-                <ul class="list-unstyled d-flex justify-content-center">
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                </ul>
-                <p class="mb-2">
-                  <i class="fas fa-quote-left pe-2"></i>Autem, totam debitis suscipit saepe
-                  sapiente magnam officiis quaerat necessitatibus odio assumenda perferendis
-                  labore laboriosam.
-                </p>
-              </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card">
+          <div class="card-body py-4">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://ui-avatars.com/api/?name=Emma+L&background=random" class="rounded-circle shadow-1-strong" width="100" height="100" />
             </div>
-          </div>
-          <div class="col-md-4 mb-0">
-            <div class="card">
-              <div class="card-body py-4 mt-2">
-                <div class="d-flex justify-content-center mb-4">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(17).webp"
-                    class="rounded-circle shadow-1-strong" width="100" height="100" />
-                </div>
-                <h5 class="font-weight-bold">Alexa Horwitz</h5>
-                <h6 class="font-weight-bold my-3">Front-end Developer in NY</h6>
-                <ul class="list-unstyled d-flex justify-content-center">
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="fas fa-star fa-sm text-info"></i>
-                  </li>
-                  <li>
-                    <i class="far fa-star fa-sm text-info"></i>
-                  </li>
-                </ul>
-                <p class="mb-2">
-                  <i class="fas fa-quote-left pe-2"></i>Cras sit amet nibh libero, in gravida
-                  nulla metus scelerisque ante sollicitudin commodo cras purus odio,
-                  vestibulum in tempus viverra turpis.
-                </p>
-              </div>
+            <h5 class="font-weight-bold">Emma Lewis</h5>
+            <h6 class="font-weight-bold my-3">Home Decorator</h6>
+            <p class="mb-2">
+              <i class="fas fa-quote-left pe-2"></i>
+              The customer service is phenomenal! When I had questions about framing options, they were incredibly helpful. The artwork arrived perfectly packaged and looks stunning in my living room.
+            </p>
+            <div class="text-warning mb-3">
+              ★★★★★
             </div>
           </div>
         </div>
