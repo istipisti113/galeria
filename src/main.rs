@@ -21,10 +21,10 @@ async fn main() {
     .and(warp::path::end())
     .map(|festo : String, festmeny : String|{
         let mut html = fs::read_to_string("kep.html").unwrap(); // ures html forma a kepnek
-        let data  = fs::read_to_string(format!("paintings/{}/{}/dat.txt",festo, festmeny)).unwrap_or("def\ndef".to_owned());
+        let data  = fs::read_to_string(format!("kepek/{}/{}/dat.txt",festo, festmeny)).unwrap_or("def\ndef".to_owned());
         let adat : Vec<&str> = data.split("\n").collect(); // 0 a nev 1 a mu cime
-        html = html.replace("festmeny", adat[1]);
-        html = html.replace("muvesz", adat[0]);
+        html = html.replace("festmeny", adat[0]);
+        //html = html.replace("muvesz", adat[1]);
         html = html.replace("painter", &festo);
         html = html.replace("painting", &festmeny);
         warp::reply::html(html)
@@ -44,8 +44,8 @@ async fn main() {
         warp::reply::html(page
             .replace("painter", &alkoto)
             .replace("painting", &alkotas)
-            .replace("alkotas", &adat[1])
-            .replace("alkoto", &adat[0])
+            .replace("alkotas", &adat[0])
+            .replace("alkoto", &adat[1])
         )
     });
 
@@ -76,23 +76,34 @@ async fn main() {
 
 fn creategalery() -> String{
     let mut rawgaleryhtml = fs::read_to_string("galeria.html").unwrap();
-    let dirs = fs::read_dir("kepek/teszt").unwrap();
-    let n = fs::read_dir("kepek/teszt").unwrap().count();
+    let mut dirs  = fs::read_dir("kepek/abstract").unwrap();
+    let impressionist = fs::read_dir("kepek/impressionism").unwrap();
+    //let n = fs::read_dir("kepek/teszt").unwrap().count();
     let mut items = String::new();
-    dirs.for_each(|painting|{
-        let item = format!("
+    let mut paintings : Vec<std::ffi::OsString> = vec![];
+    //let _ = dirs.map(|painting|{paintings.push(painting.unwrap().file_name().to_os_string())});
+    //let _ = impressionist.map(|painting|{paintings.push(painting.unwrap().file_name().to_os_string())});
+    items += &style(dirs, "abstract");
+    items += &style(impressionist, "impressionism");
+    println!("{}", items);
+    rawgaleryhtml.replace("galeriaitem", &items)
+}
+
+fn style(a: fs::ReadDir, mappa: &str)->String{
+    let mut returning = String::new();
+    a.for_each(|painting|{
+        returning += &format!("
             <div class='col-md-3'>
                 <div id='{}'>
                     <script>loadPage('/kep/{}/{}', '{}')</script>
                 </div>
             </div>",
+            //painting.as_ref().unwrap().file_name().to_str().unwrap(),
             painting.as_ref().unwrap().file_name().to_str().unwrap(),
-            "teszt",
+            mappa,
             painting.as_ref().unwrap().file_name().to_str().unwrap(),
-            painting.as_ref().unwrap().file_name().to_str().unwrap()
-        );
-        items += &item;
+            painting.as_ref().unwrap().file_name().to_str().unwrap());
+        //items += &item;
     });
-    println!("{}", items);
-    rawgaleryhtml.replace("galeriaitem", &items)
+    returning
 }
