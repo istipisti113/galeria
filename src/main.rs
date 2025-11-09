@@ -9,6 +9,7 @@ async fn main() {
     let home2 = warp::path("index").map(|| warp::reply::html(fs::read_to_string("index.html").unwrap()));
     let galeria = warp::path!("galeria").map(|| warp::reply::html(creategalery()));
     let header = warp::path!("header").map(|| warp::reply::html(fs::read_to_string("header.html").unwrap()));
+    let footer = warp::path!("footer").map(|| warp::reply::html(fs::read_to_string("footer.html").unwrap()));
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
@@ -74,7 +75,7 @@ async fn main() {
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header);
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
@@ -89,7 +90,7 @@ fn creategalery() -> String{
     //let _ = impressionist.map(|painting|{paintings.push(painting.unwrap().file_name().to_os_string())});
     items += &style(dirs, "abstract");
     items += &style(impressionist, "impressionism");
-    println!("{}", items);
+    //println!("{}", items);
     rawgaleryhtml.replace("galeriaitem", &items)
 }
 
