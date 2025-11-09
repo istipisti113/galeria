@@ -1,257 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="shipping.css">
+    <script src="script.js"></script>
     <link rel="icon" type="image/x-icon" href="./menu_pictures/x-icon/Title-icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="scroll-animations.js"></script>
     <title>Fusion Gallery</title>
-</head>
-<header class="p-3 mb-3 border-bottom header1">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between">
-      
-      <div class="d-flex align-items-center">
-        <img src="./menu_pictures/x-icon/Title-icon.png" alt="Fusion Gallery Logo" class="logo me-2">
-        <a href="index.html" class="text-decoration-none"> <h1 class="m-0 gallery-title">Fusion Gallery</h1></a>
+  </head>
+    <body>
+      <div id="header">
+        <script>loadPage("header", "header")</script>
       </div>
-       
-      <div class="d-flex align-items-center">
-        <form class="me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-        
-        <a href="checkout.html" class="nav-link px-2 me-3" title="Cart">
-          <img src="./menu_pictures/basket/basket-fill.svg" alt="Kosár" style="width:24px; height:auto;">
-        </a>
-        
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://avatars.githubusercontent.com/u/42544437?v=4" alt="User" width="32" height="32"
-                 class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
 
-<body>
-
-    <div class="first slide-in-left">
+      <div class="first slide-in-left">
         <main id="shipping-and-delivery" role="main">
-  <section class="page-hero">
-    <h1># shipping and delivery</h1>
-    <p>Great design delivered right to your doorstep.</p>
-    <nav aria-label="shipping tabs">
-      <ul>
-        <li><a href="#us-shipping">U.S. Shipping Options</a></li>
-        <li><a href="#intl-shipping">International Shipping Options</a></li>
-      </ul>
-    </nav>
-  </section>
+          <section class="page-hero">
+            <h1># shipping and delivery</h1>
+            <p>Great design delivered right to your doorstep.</p>
+            <nav aria-label="shipping tabs">
+              <ul>
+                <li><a href="#us-shipping">U.S. Shipping Options</a></li>
+                <li><a href="#intl-shipping">International Shipping Options</a></li>
+              </ul>
+            </nav>
+          </section>
 
-  <section id="us-shipping" class="shipping-section">
-    <h2>U.S. Shipping</h2>
+          <section id="us-shipping" class="shipping-section">
+            <h2>U.S. Shipping</h2>
 
-    <h3>Stationery</h3>
-    <table class="shipping-table stationery">
-      <thead>
-        <tr>
-          <th>Shipping option</th>
-          <th>Estimated time in transit*</th>
-          <th>Shipping rates</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Standard</td><td>5 business days</td><td>$3.95 to $9.95</td></tr>
-        <tr><td>Priority</td><td>3 business days</td><td>$14.95</td></tr>
-        <tr><td>Expedited</td><td>2 business days</td><td>$24.95</td></tr>
-        <tr><td>Rush</td><td>1 business day</td><td>$34.95</td></tr>
-      </tbody>
-    </table>
+            <h3>Stationery</h3>
+            <table class="shipping-table stationery">
+              <thead>
+                <tr>
+                  <th>Shipping option</th>
+                  <th>Estimated time in transit*</th>
+                  <th>Shipping rates</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Standard</td><td>5 business days</td><td>$3.95 to $9.95</td></tr>
+                <tr><td>Priority</td><td>3 business days</td><td>$14.95</td></tr>
+                <tr><td>Expedited</td><td>2 business days</td><td>$24.95</td></tr>
+                <tr><td>Rush</td><td>1 business day</td><td>$34.95</td></tr>
+              </tbody>
+            </table>
 
-    <p class="note">
-      * Transit times do not include time spent in production. Refer to your estimated delivery date at checkout for the most accurate estimate of when you will receive your order.
-      Shipping timelines on this page may not apply to items from our Third Party Marketplace. Minted offers various shipping options for our Third-Party Marketplace items, including Standard, Expedited, Priority, and Rush. The options and prices vary based on the size of the item, the location of the seller, and the delivery address for the order.
-    </p>
-
-    <h3>Art Prints</h3>
-    <p>ART PRINT TYPE — PRINT SIZE — STANDARD SHIPPING RATES** — FASTER SHIPPING RATES (PER ITEM)</p>
-
-    <table class="shipping-table art-print-unframed">
-      <thead>
-        <tr>
-          <th>Print type</th>
-          <th>Print size</th>
-          <th>1st item</th>
-          <th>Each additional item</th>
-          <th>Priority</th>
-          <th>Expedited</th>
-          <th>Rush</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Unframed Paper</td><td>5" x 7"</td><td>$4</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
-        <tr><td>Unframed Paper</td><td>8" x 8"</td><td>$4</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
-        <tr><td>Unframed Paper</td><td>8" x 10"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
-        <tr><td>Unframed Paper</td><td>11" x 11"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
-        <tr><td>Unframed Paper</td><td>11" x 14"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
-        <tr><td>Unframed Paper</td><td>16" x 16"</td><td>$9</td><td>$0</td><td>$25</td><td>$35</td><td>$45</td></tr>
-        <!-- more rows follow as on the page... -->
-      </tbody>
-    </table>
-
-    <h4>Mounted / Framed / Canvas pricing</h4>
-    <p>(example rows)</p>
-    <table class="shipping-table art-print-mounted">
-      <thead>
-        <tr><th>Type</th><th>Size</th><th>1st item</th><th>Each additional</th><th>Priority</th><th>Expedited</th><th>Rush</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Mounted (Framed Paper)</td><td>5" x 7"</td><td>$8</td><td>$4</td><td>$15</td><td>$22</td><td>$30</td></tr>
-        <tr><td>Mounted (Framed Paper)</td><td>8" x 8"</td><td>$9</td><td>$6</td><td>$16</td><td>$25</td><td>$35</td></tr>
-        <!-- more rows as in original -->
-      </tbody>
-    </table>
-
-    <p class="smallprint">
-      ** Pricing for sizes up to 44x60 reflect Standard Shipping rates (estimated delivery: 5 business days for Unframed Paper Prints; 6-8 business days for Mounted Art Prints). 48x70 Mounted Art Prints are not eligible for Standard shipping and must be sent with Priority shipping at a minimum.
-      *** To calculate your total shipping rate, find the item in your order with the most expensive “1st item” price. Then add to that the “additional item” price for every other item in your order.
-    </p>
-
-    <h4>A Few Things to Note</h4>
-    <ul>
-      <li>The shipping cost you see at checkout covers what Minted and our carriers charge for shipping your order. It does not include duties, taxes, or other customs fees, which are determined by governments in accordance with local laws. If you’re in the U.S. ordering from an international seller in our Third-Party Marketplace, these additional fees may apply. Duties and taxes are collected from you separately, by the carrier and not by Minted.</li>
-      <li>This may happen when the package is delivered, or it may be billed to you by the carrier later. In some cases, the carrier may hold the package until import duties are paid. For any additional questions regarding duties and fees, please reach out directly to the carrier.</li>
-      <li><a href="https://www.minted.com/contact">Contact us</a> for help shipping to APO / FPO or P.O. Box addresses.</li>
-      <li>Shipping times may vary for orders delivered to Alaska or Hawaii. Standard shipping to Alaska and Hawaii is 9 business days.</li>
-      <li>We don’t ship with a signature required, but when it comes time to deliver, requiring a signature is at the delivery driver’s discretion.</li>
-      <li>Shipping business days are defined as Monday through Friday for Rush, Expedited, and Priority, and Tuesday through Saturday for Standard shipping to residences. Shipping business days exclude New Year’s Day, Memorial Day, Independence Day, Labor Day, Thanksgiving and Christmas.</li>
-    </ul>
-  </section>
-
-  <section id="intl-shipping" class="shipping-section">
-    <h2>International Shipping</h2>
-    <p>We currently ship to <a href="https://help2.minted.com">over 200 countries</a>, using International Economy and International Priority.</p>
-
-    <h3>Stationery (International)</h3>
-    <table class="shipping-table international-stationery">
-      <thead>
-        <tr><th>Destination</th><th>Shipping option</th><th>Estimated time in transit*</th><th>Shipping rates</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Canada</td><td>Standard International</td><td>5 business days</td><td>$15.00 USD</td></tr>
-        <tr><td>Canada</td><td>Priority International</td><td>3 business days</td><td>$35.00 USD</td></tr>
-        <tr><td>Rest of World</td><td>Standard International</td><td>7 business days</td><td>$20.00 USD</td></tr>
-        <tr><td>Rest of World</td><td>Priority International</td><td>5 business days</td><td>$45.00 USD</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Art Prints (International)</h3>
-    <p>International pricing examples (first item / additional item) and Priority rates follow the same structure as the U.S. table — larger sizes have higher international rates. (See full table on the live page.)</p>
-
-    <h4>International Duties and Fees</h4>
-    <p>
-      The shipping cost you see at checkout covers what Minted and our carriers charge for shipping your order. It does not include duties, taxes, or other customs fees, which are determined by governments in accordance with local laws. If you’re in the U.S. ordering from an international seller in our Third-Party Marketplace, or if you’re outside the U.S. ordering from Minted or a U.S. seller, these additional fees may apply. Duties and taxes are collected from you separately, by the carrier and not by Minted.
-    </p>
-  </section>
-
-  <section id="packaging">
-    <h2>Packaging</h2>
-
-    <h3>Stationery and Cards</h3>
-    <p>Wrapped in bubble wrap and packaged in a cardboard box.</p>
-
-    <h3>Unframed Art Prints (5" x 7" - 11" x 14")</h3>
-    <p>Shipped in mailers with protective pads to prevent bending.</p>
-
-    <h3>Unframed Art Prints (16" x 16" and up)</h3>
-    <p>Prints are rolled and shipped in cardboard tubes.</p>
-
-    <h3>Framed Art</h3>
-    <p>Shipped in a sturdy art shipping mailer or box.</p>
-
-    <h3>Greeting Cards and Samples</h3>
-    <p>Shipped in a sturdy envelope mailer.</p>
-
-    <h3>Packing slips and invoices</h3>
-    <p>Minted’s packages include a packing slip but do not include an invoice. No pricing information will be included in your package.</p>
-  </section>
-</main>
-
-    </div>
-
-<footer class="footer-section text-md-start mt-5">
-  <div class="container-fluid py-4">
-    <div class="row align-items-start">
-      
-      <!-- LEFT SIDE: Map -->
-      <div class="col-lg-4 col-md-5 mb-4 mb-md-0 text-center text-md-start">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.873917698696!2d2.335069076756108!3d48.86061460054959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671d877937b0f%3A0xb975fcfa192f84d4!2sLouvre!5e0!3m2!1shu!2shu!4v1762159285157!5m2!1shu!2shu"
-          width="100%" height="250" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <!-- RIGHT SIDE: Footer content -->
-      <div class="col-lg-8 col-md-7">
-        <div class="row">
-          <div class="col-md-4 mb-4">
-            <h6 class="text-uppercase fw-bold mb-4">Fusion Gallery</h6>
-            <p>
-              "Our purpose in life is to uncover exceptional design from all over the world
-              and bring this to savvy consumers who won't accept anything else."
+            <p class="note">
+              * Transit times do not include time spent in production. Refer to your estimated delivery date at checkout for the most accurate estimate of when you will receive your order.
+              Shipping timelines on this page may not apply to items from our Third Party Marketplace. Minted offers various shipping options for our Third-Party Marketplace items, including Standard, Expedited, Priority, and Rush. The options and prices vary based on the size of the item, the location of the seller, and the delivery address for the order.
             </p>
-          </div>
 
-          <div class="col-md-3 mb-4">
-            <h6 class="text-uppercase fw-bold mb-4">Products</h6>
-            <p><a href="#!" class="text-reset">All Paintings</a></p>
-            <p><a href="#!" class="text-reset">Pairs & Sets</a></p>
-            <p><a href="#!" class="text-reset">Photography</a></p>
-            <p><a href="#!" class="text-reset">Drawings</a></p>
-          </div>
+            <h3>Art Prints</h3>
+            <p>ART PRINT TYPE — PRINT SIZE — STANDARD SHIPPING RATES** — FASTER SHIPPING RATES (PER ITEM)</p>
 
-          <div class="col-md-3 mb-4">
-            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
-            <p><a href="shipping.html" class="text-reset">Shipping</a></p>
-            <p><a href="https://www.minted.com/lp/terms" class="text-reset">Terms & Conditions</a></p>
-            <p><a href="https://help2.minted.com/s/article/Privacy-Policy" class="text-reset">Your Privacy Choices</a></p>
-            <p><a href="https://help2.minted.com/s/" class="text-reset">Help</a></p>
-          </div>
+            <table class="shipping-table art-print-unframed">
+              <thead>
+                <tr>
+                  <th>Print type</th>
+                  <th>Print size</th>
+                  <th>1st item</th>
+                  <th>Each additional item</th>
+                  <th>Priority</th>
+                  <th>Expedited</th>
+                  <th>Rush</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Unframed Paper</td><td>5" x 7"</td><td>$4</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
+                <tr><td>Unframed Paper</td><td>8" x 8"</td><td>$4</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
+                <tr><td>Unframed Paper</td><td>8" x 10"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
+                <tr><td>Unframed Paper</td><td>11" x 11"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
+                <tr><td>Unframed Paper</td><td>11" x 14"</td><td>$5</td><td>$0</td><td>$15</td><td>$25</td><td>$35</td></tr>
+                <tr><td>Unframed Paper</td><td>16" x 16"</td><td>$9</td><td>$0</td><td>$25</td><td>$35</td><td>$45</td></tr>
+                <!-- more rows follow as on the page... -->
+              </tbody>
+            </table>
 
-          <div class="col-md-2 mb-4">
-            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-            <p>New York, NY 10012, US</p>
-            <p>FGallery@support.com</p>
-            <p>+ 01 234 567 88</p>
-            <p>+ 01 234 567 89</p>
-          </div>
-        </div>
+            <h4>Mounted / Framed / Canvas pricing</h4>
+            <p>(example rows)</p>
+            <table class="shipping-table art-print-mounted">
+              <thead>
+                <tr><th>Type</th><th>Size</th><th>1st item</th><th>Each additional</th><th>Priority</th><th>Expedited</th><th>Rush</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Mounted (Framed Paper)</td><td>5" x 7"</td><td>$8</td><td>$4</td><td>$15</td><td>$22</td><td>$30</td></tr>
+                <tr><td>Mounted (Framed Paper)</td><td>8" x 8"</td><td>$9</td><td>$6</td><td>$16</td><td>$25</td><td>$35</td></tr>
+                <!-- more rows as in original -->
+              </tbody>
+            </table>
+
+            <p class="smallprint">
+              ** Pricing for sizes up to 44x60 reflect Standard Shipping rates (estimated delivery: 5 business days for Unframed Paper Prints; 6-8 business days for Mounted Art Prints). 48x70 Mounted Art Prints are not eligible for Standard shipping and must be sent with Priority shipping at a minimum.
+              *** To calculate your total shipping rate, find the item in your order with the most expensive “1st item” price. Then add to that the “additional item” price for every other item in your order.
+            </p>
+
+            <h4>A Few Things to Note</h4>
+            <ul>
+              <li>The shipping cost you see at checkout covers what Minted and our carriers charge for shipping your order. It does not include duties, taxes, or other customs fees, which are determined by governments in accordance with local laws. If you’re in the U.S. ordering from an international seller in our Third-Party Marketplace, these additional fees may apply. Duties and taxes are collected from you separately, by the carrier and not by Minted.</li>
+              <li>This may happen when the package is delivered, or it may be billed to you by the carrier later. In some cases, the carrier may hold the package until import duties are paid. For any additional questions regarding duties and fees, please reach out directly to the carrier.</li>
+              <li><a href="https://www.minted.com/contact">Contact us</a> for help shipping to APO / FPO or P.O. Box addresses.</li>
+              <li>Shipping times may vary for orders delivered to Alaska or Hawaii. Standard shipping to Alaska and Hawaii is 9 business days.</li>
+              <li>We don’t ship with a signature required, but when it comes time to deliver, requiring a signature is at the delivery driver’s discretion.</li>
+              <li>Shipping business days are defined as Monday through Friday for Rush, Expedited, and Priority, and Tuesday through Saturday for Standard shipping to residences. Shipping business days exclude New Year’s Day, Memorial Day, Independence Day, Labor Day, Thanksgiving and Christmas.</li>
+            </ul>
+          </section>
+
+          <section id="intl-shipping" class="shipping-section">
+            <h2>International Shipping</h2>
+            <p>We currently ship to <a href="https://help2.minted.com">over 200 countries</a>, using International Economy and International Priority.</p>
+
+            <h3>Stationery (International)</h3>
+            <table class="shipping-table international-stationery">
+              <thead>
+                <tr><th>Destination</th><th>Shipping option</th><th>Estimated time in transit*</th><th>Shipping rates</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Canada</td><td>Standard International</td><td>5 business days</td><td>$15.00 USD</td></tr>
+                <tr><td>Canada</td><td>Priority International</td><td>3 business days</td><td>$35.00 USD</td></tr>
+                <tr><td>Rest of World</td><td>Standard International</td><td>7 business days</td><td>$20.00 USD</td></tr>
+                <tr><td>Rest of World</td><td>Priority International</td><td>5 business days</td><td>$45.00 USD</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Art Prints (International)</h3>
+            <p>International pricing examples (first item / additional item) and Priority rates follow the same structure as the U.S. table — larger sizes have higher international rates. (See full table on the live page.)</p>
+
+            <h4>International Duties and Fees</h4>
+            <p>
+              The shipping cost you see at checkout covers what Minted and our carriers charge for shipping your order. It does not include duties, taxes, or other customs fees, which are determined by governments in accordance with local laws. If you’re in the U.S. ordering from an international seller in our Third-Party Marketplace, or if you’re outside the U.S. ordering from Minted or a U.S. seller, these additional fees may apply. Duties and taxes are collected from you separately, by the carrier and not by Minted.
+            </p>
+          </section>
+
+          <section id="packaging">
+            <h2>Packaging</h2>
+
+            <h3>Stationery and Cards</h3>
+            <p>Wrapped in bubble wrap and packaged in a cardboard box.</p>
+
+            <h3>Unframed Art Prints (5" x 7" - 11" x 14")</h3>
+            <p>Shipped in mailers with protective pads to prevent bending.</p>
+
+            <h3>Unframed Art Prints (16" x 16" and up)</h3>
+            <p>Prints are rolled and shipped in cardboard tubes.</p>
+
+            <h3>Framed Art</h3>
+            <p>Shipped in a sturdy art shipping mailer or box.</p>
+
+            <h3>Greeting Cards and Samples</h3>
+            <p>Shipped in a sturdy envelope mailer.</p>
+
+            <h3>Packing slips and invoices</h3>
+            <p>Minted’s packages include a packing slip but do not include an invoice. No pricing information will be included in your package.</p>
+          </section>
+        </main>
       </div>
-
+    <div id="footer">
+    <script>
+      loadPage("footer", "footer")
+    </script>
     </div>
-  </div>
-
-  <div class="text-center p-3 border-top" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2025 Copyright:
-    <a class="text-reset fw-bold" href="index.html">FusionGallery.com</a>
-  </div>
-</footer>
-
-
-</body>
+    </body>
 </html>

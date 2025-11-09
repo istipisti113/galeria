@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/script.js"></script>
     <title>alkotas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="first" style="margin: 0px; padding: 0px;">
-    <div>
-        <div style="text-align: center;">
-            <img src="/paintings/painter/painting/painting.jpg" alt="" style="max-height: 500px;"><br>
-            alkotas <br>
-            alkoto
-        </div>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+  </head>
+  <body class="first" style="margin: 0px; padding: 0px; background-color: #f7f2e9;">
+    <div id="header"><script>loadPage("/header", "header")</script></div>
+    <div style="padding: 20px; float: left;">
+      <a href="/galeria" style="text-decoration: none; padding: 20px; margin-left: 10px; background-color: white; 
+      color: black; font-size: 20px; font-weight: bold;">
+        Back to galery
+      </a>
     </div>
-</body>
+    <div>
+      <div style="text-align: center; padding: 20px; margin: auto; margin-top: 20px; background-color: #f7f2e9;
+      width: 500px;">
+        <img src="/kepek/painter/painting/painting.jpg" alt="" style="max-height: 500px;"><br>
+        <h2>alkotas</h2>
+        <button style="border-radius: 5px; background-color: #e8b68f; color: black; font-size: 20px; padding-left: 10px; padding-right: 10px;" onclick="add_to_cart('painting')">
+          Add to cart
+        </button>
+      </div>
+    </div>
+    <div id="footer"><script>loadPage("/footer", "footer")</script></div>
+  </body>
 </html>

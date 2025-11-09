@@ -10,6 +10,8 @@ async fn main() {
     let galeria = warp::path!("galeria").map(|| warp::reply::html(creategalery()));
     let header = warp::path!("header").map(|| warp::reply::html(fs::read_to_string("header.html").unwrap()));
     let footer = warp::path!("footer").map(|| warp::reply::html(fs::read_to_string("footer.html").unwrap()));
+    let shipping = warp::path!("shipping").map(|| warp::reply::html(fs::read_to_string("shipping.html").unwrap()));
+    let shippingcss = warp::path("shipping.css").and(warp::fs::file("shipping.css"));
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
@@ -44,14 +46,18 @@ async fn main() {
 
     let alkotas = warp::path!("alkotas"/String/ String).map(|alkoto: String , alkotas: String|{
         let page = fs::read_to_string("alkotas.html").unwrap();
-        let raw  = fs::read_to_string(format!("paintings/{}/{}/dat.txt",alkoto, alkotas)).unwrap_or("def\ndef".to_owned()); 
+        let raw  = fs::read_to_string(format!("kepek/{}/{}/dat.txt",alkoto.trim(), alkotas.trim())).unwrap_or("def\ndef".to_owned()); 
         let adat : Vec<&str> = raw.split("\n").collect(); // 0 a nev 1 a mu cime
         warp::reply::html(page
             .replace("painter", &alkoto)
             .replace("painting", &alkotas)
             .replace("alkotas", &adat[0])
-            .replace("alkoto", &adat[1])
+            //.replace("alkoto", &adat[1])
         )
+    });
+
+    let vetel = warp::path!("buy"/String).map(|alkotas: String|{
+        
     });
 
     let favicon = warp::path("favicon.ico").and(warp::fs::file("favourite.ico"));
@@ -76,7 +82,7 @@ async fn main() {
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs);
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
