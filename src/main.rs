@@ -60,6 +60,20 @@ async fn main() {
         
     });
 
+    let lista = warp::path!("list").map(||{
+        let impressionism = fs::read_dir("kepek/impressionism").unwrap().into_iter();
+        let abstractpics = fs::read_dir("kepek/abstract").unwrap().into_iter();
+        let mut lista : Vec<String> = vec![];
+        lista.append(&mut names(impressionism, "impressionism"));
+        lista.append(&mut names(abstractpics, "abstract"));
+        let mut replying = String::from("{");
+        lista.iter().for_each(|name|{
+            replying += &("\"".to_owned()+name.trim()+"\",");
+        });
+        replying+="}";
+        warp::reply::json(&replying)
+    });
+
     let favicon = warp::path("favicon.ico").and(warp::fs::file("favourite.ico"));
 
     let icons = warp::path("icons")
@@ -80,7 +94,7 @@ async fn main() {
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
-    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
+    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
     .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
     warp::serve(routes).run(([0,0,0,0], port)).await;
@@ -118,4 +132,20 @@ fn style(a: fs::ReadDir, mappa: &str)->String{
         //items += &item;
     });
     returning
+}
+
+fn names(dir : fs::ReadDir, mappa: &str)-> Vec<String>{
+    dir.into_iter().map(|kep|{
+    //for kep in dir.into_iter(){
+        let a = kep.unwrap().file_name().into_string().unwrap();
+        //println!("{}", a);
+        //println!("{}/dat.txt",a);
+        //println!("{}",fs::read_to_string(format!("kepek/impressionism/{}/dat.txt", a)).unwrap());
+        let data : String = fs::read_to_string(format!("kepek/{}/{}/dat.txt",mappa ,a)).unwrap();
+        let asdf : Vec<&str>= data.split("\n").collect();
+        let name = asdf[0];
+        println!("{}", name);
+        String::from(name)
+    //}
+    }).collect()
 }
