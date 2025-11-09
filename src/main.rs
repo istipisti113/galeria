@@ -68,7 +68,7 @@ async fn main() {
         lista.append(&mut names(abstractpics, "abstract"));
         let mut replying = String::from("{");
         lista.iter().for_each(|name|{
-            replying += &("\"".to_owned()+name+"\",");
+            replying += &("\"".to_owned()+name.trim()+"\",");
         });
         replying+="}";
         warp::reply::json(&replying)
