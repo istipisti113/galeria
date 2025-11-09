@@ -56,6 +56,10 @@ async fn main() {
         )
     });
 
+    let vetel = warp::path!("buy"/String).map(|alkotas: String|{
+        
+    });
+
     let favicon = warp::path("favicon.ico").and(warp::fs::file("favourite.ico"));
 
     let icons = warp::path("icons")
