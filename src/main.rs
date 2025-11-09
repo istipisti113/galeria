@@ -55,9 +55,17 @@ async fn main() {
             //.replace("alkoto", &adat[1])
         )
     });
+    
+    let kosar = warp::path!("kosar").map(||{
 
-    let vetel = warp::path!("buy"/String).map(|alkotas: String|{
-        
+    });
+
+    let vetel = warp::path!("vetel"/String).map(|alkotas: String|{
+        let mut kosar = fs::read_to_string("kosar.txt").unwrap();
+        if kosar != ""{kosar+="\n"};
+        kosar+=&alkotas;
+        fs::write("kosar.txt", kosar).unwrap();
+        warp::reply::html("nigger")
     });
 
     let lista = warp::path!("list").map(||{
@@ -94,7 +102,7 @@ async fn main() {
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
-    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista)
+    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
     .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
     warp::serve(routes).run(([0,0,0,0], port)).await;
@@ -144,7 +152,7 @@ fn names(dir : fs::ReadDir, mappa: &str)-> Vec<String>{
         let data : String = fs::read_to_string(format!("kepek/{}/{}/dat.txt",mappa ,a)).unwrap();
         let asdf : Vec<&str>= data.split("\n").collect();
         let name = asdf[0];
-        println!("{}", name);
+        //println!("{}", name);
         String::from(name)
     //}
     }).collect()

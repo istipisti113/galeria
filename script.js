@@ -8,5 +8,5 @@ function loadPage(page, id) {
 
 function add_to_cart(painting) {
   console.log(painting)
-  fetch()
+  fetch("/vetel/"+painting)
 }
