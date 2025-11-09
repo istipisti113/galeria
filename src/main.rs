@@ -16,6 +16,8 @@ async fn main() {
     let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
     let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
 
+    let checkout = warp::path("checkout.html").map(|| warp::reply::html(fs::read_to_string("checkout.html").unwrap()));
+
     let galeria_elemek = warp::path("kep")
     .and(warp::path::param()).and(warp::path::param())
     .and(warp::path::end())
@@ -65,12 +67,13 @@ async fn main() {
 
     let articles = warp::path("articles")
     .and(warp::fs::dir("menu_pictures/Related_Articles"));
+    let basket = warp::path("basketimg").and(warp::fs::dir("menu_pictures/basket"));
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek);
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
