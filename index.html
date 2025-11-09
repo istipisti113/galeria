@@ -7,73 +7,16 @@
     <link rel="icon" type="image/x-icon" href="title-icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
     <title>FusionGallery</title>
 
     <link rel="icon" href="title-icon.png" type="image/x-icon">
 </head>
-<header class="p-3 mb-3 border-bottom header1">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between">
-      
-      <div class="d-flex align-items-center">
-        <img src="title-icon.png" alt="Fusion Gallery Logo" class="logo me-2">
-        <h1 class="m-0 gallery-title">Fusion Gallery</h1>
-      </div>
-       
-      <div class="d-flex align-items-center">
-        <form class="me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-        
-        <a href="checkout.html" class="nav-link px-2 me-3" title="Cart">
-          <img src="basketimg/basket-fill.svg" alt="Kosár" style="width:24px; height:auto;">
-        </a>
-        
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://avatars.githubusercontent.com/u/42544437?v=4" alt="User" width="32" height="32"
-                 class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
 
 <body>
-  <section>
-    <div class="coupon_slideshow">
-        <div class="w-100 p-0.5">       
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <p>FREE shipping on art print orders $500+. Code: SHIPFREE. View all offers </p>
-                    </div>
-                    <div class="carousel-item">
-                        <p>Members save 20% + free shipping, every day. Join Minted More </p>
-                    </div>
-
-                </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-            </div>
-        </div>
-    </div>
-    </section>
-    <section>
+<script>loadPage("header", "header")</script>
+<div id="header"></div>
+<section>
 <div class="first">
         <div class="info">
             <h1>Art & Home</h1>
