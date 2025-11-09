@@ -1,2 +1,4 @@
 Punto de inflexión
-
+abstract
+10
+drawings
