@@ -15,6 +15,7 @@ async fn main() {
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
     let bootstrapmincss = warp::path("bootstrap.min.css").and(warp::fs::file("bootstrap.min.css"));
     let bootstrapminjs = warp::path("bootstrap.min.js").and(warp::fs::file("bootstrap.min.js"));
+    let scrolljs = warp::path("scroll-animations.js").and(warp::fs::file("scroll-animations.js"));
     let bootstrapcss = warp::path("bootstrap.css").and(warp::fs::file("bootstrap.css"));
     let bootstrapjs = warp::path("bootstrap.js").and(warp::fs::file("bootstrap.js"));
 
@@ -75,7 +76,7 @@ async fn main() {
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer);
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
