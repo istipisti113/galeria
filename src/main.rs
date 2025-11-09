@@ -12,6 +12,8 @@ async fn main() {
     let footer = warp::path!("footer").map(|| warp::reply::html(fs::read_to_string("footer.html").unwrap()));
     let shipping = warp::path!("shipping").map(|| warp::reply::html(fs::read_to_string("shipping.html").unwrap()));
     let shippingcss = warp::path("shipping.css").and(warp::fs::file("shipping.css"));
+
+    let reviews = warp::path("reviews").and(warp::fs::file("reviews.html"));
     //let sidebar = warp::path("sidebar.html").and(warp::fs::file("sidebar.html"));
     let style = warp::path("style.css").and(warp::fs::file("style.css"));
     let script = warp::path("script.js").and(warp::fs::file("script.js"));
@@ -104,7 +106,7 @@ async fn main() {
 
     let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss).or(reviews);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
