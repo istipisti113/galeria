@@ -28,6 +28,7 @@ async fn main() {
         let rawkosar  = fs::read_to_string("kosar.txt").unwrap();
         let kosar : Vec<&str>= rawkosar.split("\n").collect();
         for elem in kosar{
+            if elem == ""{continue}
             itemek += &item.replace("painting", elem);
         }
         page = page.replace("paintings", &itemek);
@@ -35,7 +36,9 @@ async fn main() {
     });
     
     let clearbasket = warp::path!("clearbasket").map(||{
-        fs::write("kosar.txt", "").unwrap();
+        fs::remove_file("kosar.txt").unwrap();
+        fs::File::create("kosar.txt").unwrap();
+        println!("kosar uritve");
         warp::reply()
     });
 
@@ -87,7 +90,11 @@ async fn main() {
         if kosar != ""{kosar+="\n"};
         kosar+=&alkotas;
         fs::write("kosar.txt", kosar).unwrap();
-        warp::reply::html("nigger")
+        warp::reply::html("")
+    });
+    
+    let reviews = warp::path!("/reviews").map(||{
+        
     });
 
     let lista = warp::path!("list").map(||{
@@ -124,7 +131,7 @@ async fn main() {
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
-    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel).or(kosar)
+    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel).or(kosar).or(clearbasket)
     .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
     .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
     warp::serve(routes).run(([0,0,0,0], port)).await;
