@@ -1,3 +1,5 @@
+
+#![recursion_limit = "256"]
 use warp::{filters::path::param, reply::{Reply, Response}, Filter};
 use std::{collections::HashMap, fs, string};
 
@@ -93,8 +95,11 @@ async fn main() {
         warp::reply::html("")
     });
     
-    let reviews = warp::path!("/reviews").map(||{
-        
+    let reviews = warp::path!("reviews").map(||{
+        warp::reply::html(fs::read_to_string("reviews.html").unwrap())
+    });
+    let cikkek = warp::path!("cikkek").map(||{
+        warp::reply::html(fs::read_to_string("cikkek.html").unwrap())
     });
 
     let lista = warp::path!("list").map(||{
@@ -131,9 +136,9 @@ async fn main() {
 
     let title_icon = warp::path("title-icon.png").and(warp::fs::file("menu_pictures/x-icon/Title-icon.png"));
 
-    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(lista).or(vetel).or(kosar).or(clearbasket)
-    .or(alkotas).or(form).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
-    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss);
+    let routes = home.or(home2).or(style).or(script).or(festmenyek).or(galeria).or(vetel).or(kosar).or(clearbasket)
+    .or(alkotas).or(icons).or(sorting).or(bootstrapcss).or(bootstrapjs).or(bootstrapmincss).or(bootstrapminjs).or(articles).or(favicon)
+    .or(title_icon).or(galeria_elemek).or(kepek).or(checkout).or(basket).or(header).or(footer).or(scrolljs).or(shipping).or(shippingcss).or(reviews).or(cikkek);
     warp::serve(routes).run(([0,0,0,0], port)).await;
 }
 
